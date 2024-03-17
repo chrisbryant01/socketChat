@@ -15,7 +15,7 @@ function App() {
     const handleMessageSubmit = async (e) => {
         e.preventDefault();
         let result = await fetch(
-            '/message', {
+            'https://socketchat-backend-production.up.railway.app/message', {
                 method: 'post',
                 body: JSON.stringify({ message }),
                 headers: {
@@ -31,7 +31,7 @@ function App() {
     }
 
     const getMessages = async () => {
-        let result = await fetch('/messages');
+        let result = await fetch('https://socketchat-backend-production.up.railway.app//messages');
         result = await result.json();
         setChatMessages(result)
     }
