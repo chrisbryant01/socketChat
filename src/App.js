@@ -15,7 +15,7 @@ function App() {
     const handleMessageSubmit = async (e) => {
         e.preventDefault();
         let result = await fetch(
-            'http://localhost:8000/message', {
+            '/message', {
                 method: 'post',
                 body: JSON.stringify({ message }),
                 headers: {
@@ -31,7 +31,7 @@ function App() {
     }
 
     const getMessages = async () => {
-        let result = await fetch('http://localhost:8000/messages');
+        let result = await fetch('/messages');
         result = await result.json();
         setChatMessages(result)
     }
