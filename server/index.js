@@ -8,6 +8,10 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 const MessageSchema = new mongoose.Schema({
+	username: {
+		type: String,
+		required: false,
+	},
 	message: {
 		type: String,
 		required: true,
@@ -48,6 +52,37 @@ app.get("/messages", async (req, resp) => {
 	try {
 		let messages = await Message.find();
 		resp.send(messages);
+	} catch (e) {
+		resp.send("Something Went Wrong");
+	}
+});
+
+// Users
+const UsersSchema = new mongoose.Schema({
+	username: {
+		type: String,
+		required: true,
+	},
+	display_name: {
+		type: String,
+		required: true,
+	},
+	password: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+		required: true,
+	},
+});
+
+const Users = mongoose.model('users', UsersSchema);
+
+app.get("/users", async (req, resp) => {
+	try {
+		let users = await Users.find();
+		resp.send(users);
 	} catch (e) {
 		resp.send("Something Went Wrong");
 	}

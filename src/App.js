@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 function App() {
     const [chatMessages, setChatMessages] = useState([]);
     const [message, setMessage] = useState("");
+    // const [ user, setUser ] = useState("");
 
     useEffect(() => {
         getMessages();
@@ -42,11 +43,12 @@ function App() {
             <div className="chat-container" style={{ display: 'flex', flexFlow: 'column nowrap', borderRadius: 4, boxShadow: '0px 1px 1px 0px rgba(0,0,0,0.3)', height: '100%', maxHeight: '75vh', overflow: 'scroll', border: '1px solid #000', margin: 35, padding: 20, paddingTop: 10}}>
                 {
                     chatMessages.map((message, index) => {
+
                         return (
                             <div key={index} style={{ borderRadius: 2, padding: 10, border: '1px solid #000', margin: 10}}>
                                 <p style={{ fontSize: 12 }}>{message.date}</p>
                                 <p>
-                                    <b>Username:</b>{` `}
+                                    <strong>{message.user ? `${message.user}: ` : "Username:"}</strong>{` `}
                                     {message.message}
                                 </p>
                             </div>
