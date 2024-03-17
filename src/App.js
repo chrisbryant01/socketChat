@@ -31,7 +31,7 @@ function App() {
     }
 
     const getMessages = async () => {
-        let result = await fetch('https://socketchat-backend-production.up.railway.app//messages');
+        let result = await fetch('https://socketchat-backend-production.up.railway.app/messages');
         result = await result.json();
         setChatMessages(result)
     }
